@@ -8,13 +8,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-card {
-  height: 10%;
-  width: 10%;
-  border: 1px black solid;
+.card {
+  height: 27vh;
+  width: 19vh;
+  font-size: 29vh;
+  line-height: 0.6;
 }
