@@ -1,0 +1,29 @@
+.deck {
+  display: -webkit-flex;
+  display: flex;
+  border: 1px solid black;
+  width: fit-content;
+  height: 29vh;
+  padding: 2vh;
+  align-items: center;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reserved-deck {
+  height: 30vh;
+  width: 22vh;
+  border: 1px solid;
+}
+
+.horizontal-layer {
+  display: flex;
+  width: 100%;
+}
+
+.piles {
+  display: flex;
+}

@@ -1,19 +1,33 @@
+import { cardTypes, cardValues } from "./constants";
+import Card from "./card";
+import { shuffle } from "lodash";
+
 class Deck {
   constructor() {
     this.cards = [];
-    fill();
+    this.fill();
   }
 
   fill() {
-    for (let cardType in cardTypes) {
+    for (let cardType of cardTypes) {
       for (let value of cardValues) {
         this.cards.push(new Card(cardType, value));
       }
     }
+    this.cards = shuffle(this.cards);
   }
 
-  takeCard() {
+  drawCard() {
     return this.cards.pop();
+  }
+
+  getActiveCard() {
+    return this.cards[this.cards.length - 1];
+  }
+
+  changeActiveCard() {
+    let activeCard = this.cards.pop();
+    this.card.unshift(activeCard);
   }
 }
 

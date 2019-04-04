@@ -1,10 +1,12 @@
+import { cardTypes, cardValues } from "./constants";
+
 class Card {
   constructor(cardType, value) {
     this.cardType = cardType;
     this.facingUp = false;
     this.value = value;
-    this.colour = "black";
-    if (cardType == "DIAMONDS" || cardType == "HEARTS") this.colour = "red";
+    this.color = "black";
+    if (cardType == "DIAMONDS" || cardType == "HEARTS") this.color = "red";
   }
 
   faceUp() {
