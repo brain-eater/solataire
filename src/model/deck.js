@@ -27,7 +27,11 @@ class Deck {
 
   changeActiveCard() {
     let activeCard = this.cards.pop();
-    this.card.unshift(activeCard);
+    this.cards.unshift(activeCard);
+  }
+
+  takeActiveCard() {
+    return this.cards.pop();
   }
 }
 

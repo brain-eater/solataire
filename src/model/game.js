@@ -13,6 +13,7 @@ class Game {
     this.deck = new Deck();
     this.setPiles();
     this.setReservedDecks();
+    return this;
   }
 
   setReservedDecks() {

@@ -19,10 +19,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.card {
-  height: 27vh;
-  width: 19vh;
-  font-size: 29vh;
-  line-height: 0.6;
-}

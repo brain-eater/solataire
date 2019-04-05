@@ -12,12 +12,10 @@ const CARDS = {
     "\u{1F0A9}",
     "\u{1F0AA}",
     "\u{1F0AB}",
-    "\u{1F0AC}",
     "\u{1F0AD}",
     "\u{1F0AE}"
   ],
   HEARTS: [
-    "\u{1F0B1}",
     "\u{1F0B1}",
     "\u{1F0B2}",
     "\u{1F0B3}",
@@ -34,7 +32,6 @@ const CARDS = {
   ],
   DIAMONDS: [
     "\u{1F0C1}",
-    "\u{1F0C1}",
     "\u{1F0C2}",
     "\u{1F0C3}",
     "\u{1F0C4}",
@@ -49,7 +46,6 @@ const CARDS = {
     "\u{1F0CE}"
   ],
   CLUBS: [
-    "\u{1F0D1}",
     "\u{1F0D1}",
     "\u{1F0D2}",
     "\u{1F0D3}",

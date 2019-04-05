@@ -12,5 +12,14 @@ class Pile {
     this.cards.push(card);
     return true;
   }
+
+  getActiveCard() {
+    return this.cards[this.cards.length - 1];
+  }
+
+  takeCard() {
+    this.cards[this.cards.length - 2].faceUp();
+    return this.cards.pop();
+  }
 }
 export default Pile;
