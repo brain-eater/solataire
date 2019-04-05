@@ -13,12 +13,13 @@ function Card(props) {
   let color = props.color || "black";
   let top = props.top || 0;
   let height = props.height || CARD_HEIGHT;
+  let className = props.className || "";
   top += "vh";
   height += "vh";
-  let draggable = props.draggable == undefined || props.draggable == true;
+  let draggable = props.draggable === undefined || props.draggable === true;
   return (
     <div
-      className={"card " + props.className}
+      className={"card " + className}
       draggable={draggable}
       onDragStart={props.onDragStart}
       onClick={props.onClick}
@@ -101,16 +102,17 @@ class GameComponent extends React.Component {
     super(props);
     this.state = new Game();
     this.state.setup();
+    this.draggingCardContainer = null;
   }
 
   cardDragStart(dragEvent) {
     const containerDiv = dragEvent.currentTarget.parentElement;
     const containerCategory = containerDiv.parentElement.id;
-    if (containerCategory == "deck") {
-      this.state.draggingCardContainer = this.state[containerCategory];
+    if (containerCategory === "deck") {
+      this.draggingCardContainer = this.state[containerCategory];
       return;
     }
-    this.state.draggingCardContainer = this.state[containerCategory][
+    this.draggingCardContainer = this.state[containerCategory][
       containerDiv.id - 1
     ];
   }
@@ -122,10 +124,10 @@ class GameComponent extends React.Component {
       droppingContainerDiv.id - 1
     ];
     const isDropped = dropingContainer.addCard(
-      this.state.draggingCardContainer.getActiveCard()
+      this.draggingCardContainer.getActiveCard()
     );
     if (isDropped) {
-      this.state.draggingCardContainer.takeCard().faceUp();
+      this.draggingCardContainer.takeCard().faceUp();
       this.setState(this.state);
     }
   }
@@ -190,7 +192,6 @@ class GameComponent extends React.Component {
             </div>
             <div>
               <Card
-                onDragStart={this.onDragStart}
                 Unicode={getUnicode(activeCard)}
                 draggable={true}
                 color={activeCard.color}

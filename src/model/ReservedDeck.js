@@ -5,8 +5,8 @@ class ReservedDeck {
   }
   addCard(card) {
     let lastCard = this.cards[this.cards.length - 1];
-    if (!lastCard && card.value != "A") return false;
-    if (this.cardsType && this.cardsType != card.cardType) return false;
+    if (!lastCard && card.value !== "A") return false;
+    if (this.cardsType && this.cardsType !== card.cardType) return false;
     console.log(lastCard);
     if (lastCard && !lastCard.isNextCard(card)) return false;
     this.cardsType = card.cardType;

@@ -7,7 +7,8 @@ class Pile {
 
   addCard(card) {
     const lastCard = this.cards[this.cards.length - 1];
-    if (lastCard.color == card.color) return false;
+    console.log(lastCard, card);
+    if (lastCard.color === card.color) return false;
     if (!lastCard.isPreviousCard(card)) return false;
     this.cards.push(card);
     return true;
