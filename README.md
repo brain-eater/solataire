@@ -1,3 +1,5 @@
+If you want to play this game go to https://brain-eater.github.io/solataire/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
