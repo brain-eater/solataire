@@ -6,9 +6,9 @@ class Pile {
   }
 
   addCard(card) {
-    const lastCard = this.cards[this.cards.length];
-    if (lastCard.color == card.color || card.isFacingDown()) return false;
-    if (!lastCard.isNextCard(card)) return false;
+    const lastCard = this.cards[this.cards.length - 1];
+    if (lastCard.color == card.color) return false;
+    if (!lastCard.isPreviousCard(card)) return false;
     this.cards.push(card);
     return true;
   }
@@ -18,7 +18,9 @@ class Pile {
   }
 
   takeCard() {
-    this.cards[this.cards.length - 2].faceUp();
+    if (this.cards.length > 1) {
+      this.cards[this.cards.length - 2].faceUp();
+    }
     return this.cards.pop();
   }
 }

@@ -23,10 +23,15 @@ function Card(props) {
 }
 
 function Pile(props) {
+  console.log(props);
   let key = 1;
-
   return (
-    <div className="pile" id={props.id}>
+    <div
+      className="pile"
+      id={props.id}
+      onDragOver={de => de.preventDefault()}
+      onDrop={props.onCardDrop}
+    >
       {props.cards.map(card => {
         let unicode = cardUnicodes["BACK"][0];
         let draggable = false;
@@ -81,6 +86,10 @@ class GameComponent extends React.Component {
   cardDragStart(dragEvent) {
     const containerDiv = dragEvent.currentTarget.parentElement;
     const containerCategory = containerDiv.parentElement.id;
+    if (containerCategory == "deck") {
+      this.state.draggingCardContainer = this.state[containerCategory];
+      return;
+    }
     this.state.draggingCardContainer = this.state[containerCategory][
       containerDiv.id - 1
     ];
@@ -96,8 +105,7 @@ class GameComponent extends React.Component {
       this.state.draggingCardContainer.getActiveCard()
     );
     if (isDropped) {
-      this.state.draggingCardContainer.takeCard();
-      console.log(this.state)
+      this.state.draggingCardContainer.takeCard().faceUp();
       this.setState(this.state);
     }
   }
@@ -135,6 +143,7 @@ class GameComponent extends React.Component {
           id={key}
           key={key++}
           onCardDragStart={this.cardDragStart.bind(this)}
+          onCardDrop={this.cardDrop.bind(this)}
         />
       );
       pileDivs.push(div);
@@ -150,20 +159,25 @@ class GameComponent extends React.Component {
     return (
       <div className="this.state">
         <div className="horizontal-layer">
-          <div className="deck">
-            <Card
-              Unicode={cardUnicodes["BACK"][0]}
-              draggable={false}
-              onClick={this.changeActiveCard.bind(this)}
-              key="1"
-            />
-            <Card
-              onDragStart={this.onDragStart}
-              Unicode={getUnicode(activeCard)}
-              onCardDragStart={this.cardDragStart.bind(this)}
-              draggable={true}
-              key="2"
-            />
+          <div className="deck" id="deck">
+            <div>
+              <Card
+                Unicode={cardUnicodes["BACK"][0]}
+                draggable={false}
+                onClick={this.changeActiveCard.bind(this)}
+                key="1"
+              />
+            </div>
+            <div>
+              <Card
+                onDragStart={this.onDragStart}
+                Unicode={getUnicode(activeCard)}
+                draggable={true}
+                color={activeCard.color}
+                onDragStart={this.cardDragStart.bind(this)}
+                key="2"
+              />
+            </div>
           </div>
 
           <div className="deck" id="reservedDecks">

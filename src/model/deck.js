@@ -30,7 +30,7 @@ class Deck {
     this.cards.unshift(activeCard);
   }
 
-  takeActiveCard() {
+  takeCard() {
     return this.cards.pop();
   }
 }
