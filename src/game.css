@@ -3,9 +3,10 @@
   display: flex;
   border: 1px solid black;
   width: fit-content;
-  height: 29vh;
+  height: 19vh;
   padding: 2vh;
   align-items: center;
+  margin-right: 18vh;
 }
 
 .game {
@@ -14,9 +15,13 @@
 }
 
 .reserved-deck {
-  height: 30vh;
-  width: 22vh;
+  height: 21vh;
+  width: 15vh;
   border: 1px solid;
+}
+
+.pile-card {
+  position: absolute;
 }
 
 .horizontal-layer {
@@ -29,9 +34,29 @@
 }
 
 .card {
-  height: 27vh;
-  width: 19vh;
-  font-size: 29vh;
-  line-height: 0.6;
+  height: 19vh;
+  width: 15vh;
+  font-size: 21vh;
+  line-height: 0.7;
   user-select: none;
+  background: white;
+  border: black 1px solid;
+}
+
+.reserved-deck > div {
+  position: absolute;
+}
+
+.pile {
+  width: 20vh;
+  margin: 1vh;
+  position: relative;
+}
+
+body {
+  padding: 1vh;
+}
+
+.tableau {
+  margin-top: 2vh;
 }

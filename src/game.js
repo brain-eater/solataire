@@ -6,25 +6,56 @@ import "./game.css";
 import Game from "./model/game";
 import { cardValues } from "./model/constants.js";
 
+const GAP_BETWEEN_CARD_OVERLAP = 8;
+const CARD_HEIGHT = 19;
+
 function Card(props) {
   let color = props.color || "black";
+  let top = props.top || 0;
+  let height = props.height || CARD_HEIGHT;
+  top += "vh";
+  height += "vh";
   let draggable = props.draggable == undefined || props.draggable == true;
   return (
     <div
-      className="card"
+      className={"card " + props.className}
       draggable={draggable}
       onDragStart={props.onDragStart}
       onClick={props.onClick}
-      style={{ color }}
+      style={{ color, top, height }}
     >
       {props.Unicode}
     </div>
   );
 }
 
+const createPileCard = function(card, onCardDragStart, key, { top, height }) {
+  let unicode = cardUnicodes["BACK"][0];
+  let draggable = false;
+  let color = "black";
+  if (!card.isFacingDown()) {
+    unicode = getUnicode(card);
+    draggable = true;
+    color = card.color;
+  }
+  return (
+    <Card
+      Unicode={unicode}
+      color={color}
+      className="pile-card"
+      key={key++}
+      top={top}
+      onDragStart={onCardDragStart}
+      draggable={draggable}
+      height={height}
+    />
+  );
+};
+
 function Pile(props) {
-  console.log(props);
   let key = 1;
+  let top = -GAP_BETWEEN_CARD_OVERLAP;
+  let height = props.cards.length * GAP_BETWEEN_CARD_OVERLAP + CARD_HEIGHT;
   return (
     <div
       className="pile"
@@ -33,23 +64,12 @@ function Pile(props) {
       onDrop={props.onCardDrop}
     >
       {props.cards.map(card => {
-        let unicode = cardUnicodes["BACK"][0];
-        let draggable = false;
-        let color = "black";
-        if (!card.isFacingDown()) {
-          unicode = getUnicode(card);
-          draggable = true;
-          color = card.color;
-        }
-        return (
-          <Card
-            Unicode={unicode}
-            color={color}
-            key={key++}
-            onDragStart={props.onCardDragStart}
-            draggable={draggable}
-          />
-        );
+        top += GAP_BETWEEN_CARD_OVERLAP;
+        height -= GAP_BETWEEN_CARD_OVERLAP;
+        return createPileCard(card, props.onCardDragStart, key, {
+          top,
+          height
+        });
       })}
     </div>
   );
@@ -157,7 +177,7 @@ class GameComponent extends React.Component {
     let reservedDeckDivs = this.generateReservedDeckDivs();
     let pileDivs = this.generatePileDivs();
     return (
-      <div className="this.state">
+      <div className="game">
         <div className="horizontal-layer">
           <div className="deck" id="deck">
             <div>
@@ -185,7 +205,7 @@ class GameComponent extends React.Component {
           </div>
         </div>
 
-        <div className="horizontal-layer">
+        <div className="horizontal-layer tableau">
           <div className="piles" id="piles">
             {pileDivs}
           </div>
