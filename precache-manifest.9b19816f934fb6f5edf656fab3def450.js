@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6344b9e7f209592337b5",
-    "url": "/solataire/static/css/main.2bcf442c.chunk.css"
+    "revision": "f63aadf415a55c1543d2",
+    "url": "/solataire/static/css/main.720b733c.chunk.css"
   },
   {
-    "revision": "6344b9e7f209592337b5",
-    "url": "/solataire/static/js/main.7ffa9716.chunk.js"
+    "revision": "f63aadf415a55c1543d2",
+    "url": "/solataire/static/js/main.c3dcf8eb.chunk.js"
   },
   {
     "revision": "b799c6605738ff605473",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/solataire/static/media/fabric-pattern.fe52ed05.png"
   },
   {
-    "revision": "57d7db6c2560c1c27b0e385ce12a6b2d",
+    "revision": "3cfa2c87606dc124eb3fe611202982a1",
     "url": "/solataire/index.html"
   }
 ];
